@@ -4,8 +4,15 @@ server:
 spring:
   application:
     name: febs-gateway
+  boot:
+    admin:
+      client:
+        url: http://${febs-monitor-admin}:8401
+        username: febs
+        password: 123456
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20
@@ -15,30 +22,45 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     serviceUrl:
-      defaultZone: http://febs:123456@localhost:8001/register/eureka/
+      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
 
 zuul:
-  SendErrorFilter:
-    error:
-      disable: true
   routes:
     auth:
       path: /auth/**
-      serviceId: FEBS-AUTH
+      serviceId: FEBS-Auth
       sensitiveHeaders: "*"
     system:
       path: /system/**
-      serviceId: febs-server-system
+      serviceId: FEBS-Server-System
       sensitiveHeaders: "*"
     test:
       path: /test/**
-      serviceId: febs-server-test
+      serviceId: FEBS-Server-Test
       sensitiveHeaders: "*"
   retryable: true
   ignored-services: "*"
   ribbon:
     eager-load:
       enabled: true
+  SendErrorFilter:
+    error:
+      disable: true
 
 ribbon:
   ReadTimeout: 3000
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

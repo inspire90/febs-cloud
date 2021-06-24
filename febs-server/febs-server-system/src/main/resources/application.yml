@@ -2,6 +2,14 @@ server:
   port: 8201
 
 spring:
+  application:
+    name: febs-server-system
+  boot:
+    admin:
+      client:
+        url: http://${febs-monitor-admin}:8401
+        username: febs
+        password: 123456
   zipkin:
     sender:
       type: rabbit
@@ -9,14 +17,13 @@ spring:
     sampler:
       probability: 1
   rabbitmq:
-    host: localhost
+    host: ${rabbitmq.url}
     port: 5672
     username: febs
     password: 123456
-  application:
-    name: febs-server-system
   datasource:
     dynamic:
+      p6spy: true
       hikari:
         connection-timeout: 30000
         max-lifetime: 1800000
@@ -25,26 +32,15 @@ spring:
         connection-test-query: select 1
         pool-name: FebsHikariCP
       primary: base
-      p6spy: true
       datasource:
         base:
           username: root
           password: daoer_123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://${mysql.url}:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
 
-mybatis-plus:
-  type-aliases-package: cc.mrbird.febs.common.entity.system
-  mapper-locations: classpath:mapper/*/*.xml
-  configuration:
-    jdbc-type-for-null: null
-  global-config:
-    banner: false
-security:
-  oauth2:
-    resource:
-      id: ${spring.application.name}
-      user-info-uri: http://localhost:8301/auth/user
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20
@@ -53,4 +49,33 @@ eureka:
     fetch-registry: true
     instance-info-replication-interval-seconds: 30
     serviceUrl:
-      defaultZone: http://febs:123456@localhost:8001/register/eureka/
+      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
+
+security:
+  oauth2:
+    resource:
+      id: ${spring.application.name}
+      user-info-uri: http://${febs-gateway}:8301/auth/user
+
+mybatis-plus:
+  type-aliases-package: cc.mrbird.febs.common.entity.system
+  mapper-locations: classpath:mapper/*/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

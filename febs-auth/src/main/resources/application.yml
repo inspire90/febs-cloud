@@ -1,16 +1,18 @@
 server:
   port: 8101
-mybatis-plus:
-  type-aliases-package: cc.mrbird.febs.common.entity.system
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    jdbc-type-for-null: null
-  global-config:
-    banner: false
+
 spring:
+  application:
+    name: febs-auth
+  boot:
+    admin:
+      client:
+        url: http://${febs-monitor-admin}:8401
+        username: febs
+        password: 123456
   redis:
     database: 0
-    host: 127.0.0.1
+    host: ${redis.url}
     port: 6379
     lettuce:
       pool:
@@ -34,21 +36,8 @@ spring:
           username: root
           password: daoer_123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://${mysql.url}:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
 
-  application:
-    name: febs-auth
-#  redis:
-#    database: 0
-#    host: 127.0.0.1
-#    port: 6379
-#    jedis:
-#      pool:
-#        min-idle: 8
-#        max-idle: 500
-#        max-active: 2000
-#        max-wait: 10000
-#    timeout: 5000
 
 eureka:
   instance:
@@ -59,4 +48,27 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     serviceUrl:
-      defaultZone: http://febs:123456@localhost:8001/register/eureka/
+      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
+
+mybatis-plus:
+  type-aliases-package: cc.mrbird.febs.common.entity.system
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

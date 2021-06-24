@@ -21,14 +21,10 @@ T
 $febs-server/febs-server-test/HELP.md,e\3\e384d8338fe8f20cd19ffc59db7b08b0dc42f151
 —
 gfebs-server/febs-server-test/src/test/java/cc/mrbird/febsservertest/FebsServerTestApplicationTests.java,9\c\9c2bb2e5d8f1e2caee07f28526ecf7df10e2dfd9
-¥
-ufebs-server/febs-server-test/src/main/java/cc/mrbird/febsservertest/config/FebsServerTestResourceServerConfigure.java,4\c\4c029f548614c506cec8ceee346207e139e44137
 „
 Tfebs-common/src/main/java/cc/mrbird/febs/common/handler/FebsAccessDeniedHandler.java,1\1\11ac292992d12fa486e8430c754e765ab4197ab1
 ˆ
 Xfebs-common/src/main/java/cc/mrbird/febs/common/handler/FebsAuthExceptionEntryPoint.java,e\5\e5cde39858b1ca3e542f856275cd35310bfa4188
-T
-$febs-server/febs-server-test/pom.xml,8\8\882ee8ed7d2247dc9946f06a2104f4b5c8c86ca8
 ‹
 [febs-common/src/main/java/cc/mrbird/febs/common/annotation/EnableFebsOauth2FeignClient.java,f\3\f3cfa07ff81f14643d7880d4853490fd9817e0e6
 ~

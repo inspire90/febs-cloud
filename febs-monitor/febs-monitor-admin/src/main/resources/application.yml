@@ -7,7 +7,7 @@ spring:
       name: febs
       password: 123456
   application:
-    name: FEBS-Monitor-Admin
+    name: febs-monitor-admin
   boot:
     admin:
       ui:
