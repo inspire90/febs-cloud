@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/febs-server/pom.xml" />
         <option value="$PROJECT_DIR$/febs-server/febs-server-system/pom.xml" />
         <option value="$PROJECT_DIR$/febs-server/febs-server-test/pom.xml" />
+        <option value="$PROJECT_DIR$/febs-monitor/febs-monitor-admin/pom.xml" />
       </list>
     </option>
   </component>

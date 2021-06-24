@@ -3,8 +3,6 @@ E
 febs-register/HELP.md,7\2\72ce57fb44a2deeaf172573b404c734dbda98f32
 Ñ
 Tfebs-register/src/test/java/cc/mrbird/febsregister/FebsRegisterApplicationTests.java,c\9\c99b4364b8462585f4573bf75deebd4c39294c06
-è
-_febs-register/src/main/java/cc/mrbird/febsregister/config/FebsRegisterWebSecurityConfigure.java,2\1\219a4c5ef368a48f84f1556983f6ee684903258b
 A
 febs-auth/HELP.md,3\2\326e4a7296885952c46a3741d5d0d01d4381b607
 
@@ -23,8 +21,6 @@ T
 $febs-server/febs-server-test/HELP.md,e\3\e384d8338fe8f20cd19ffc59db7b08b0dc42f151
 ó
 gfebs-server/febs-server-test/src/test/java/cc/mrbird/febsservertest/FebsServerTestApplicationTests.java,9\c\9c2bb2e5d8f1e2caee07f28526ecf7df10e2dfd9
-E
-febs-register/pom.xml,1\5\159b21f03cabfc6cd22527cd7efc949aaf038d45
 •
 ufebs-server/febs-server-test/src/main/java/cc/mrbird/febsservertest/config/FebsServerTestResourceServerConfigure.java,4\c\4c029f548614c506cec8ceee346207e139e44137
 Ñ
