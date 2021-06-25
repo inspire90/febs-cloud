@@ -2,6 +2,10 @@ server:
   port: 8101
 
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:8001
   application:
     name: febs-auth
   boot:
@@ -39,16 +43,6 @@ spring:
           url: jdbc:mysql://${mysql.url}:3306/febs_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
 
 
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://febs:123456@${febs-register}:8001/register/eureka/
 
 mybatis-plus:
   type-aliases-package: cc.mrbird.febs.common.entity.system
