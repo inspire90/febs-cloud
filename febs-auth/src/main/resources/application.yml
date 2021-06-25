@@ -2,10 +2,6 @@ server:
   port: 8101
 
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${nacos.url}:8001
   application:
     name: febs-auth
   boot:

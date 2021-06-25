@@ -2,9 +2,6 @@ server:
   port: 8301
 spring:
   cloud:
-    nacos:
-      discovery:
-        server-addr: ${nacos.url}:8001
     gateway:
       routes:
         - id: febs-auth
