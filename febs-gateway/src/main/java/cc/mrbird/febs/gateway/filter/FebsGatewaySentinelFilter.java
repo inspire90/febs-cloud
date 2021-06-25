@@ -22,6 +22,9 @@ import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author MrBird
+ */
 @Slf4j
 @Configuration
 public class FebsGatewaySentinelFilter {

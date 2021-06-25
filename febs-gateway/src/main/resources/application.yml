@@ -28,15 +28,15 @@ zuul:
   routes:
     auth:
       path: /auth/**
-      serviceId: FEBS-Auth
+      serviceId: febs-auth
       sensitiveHeaders: "*"
     system:
       path: /system/**
-      serviceId: FEBS-Server-System
+      serviceId: febs-server-system
       sensitiveHeaders: "*"
     test:
       path: /test/**
-      serviceId: FEBS-Server-Test
+      serviceId: febs-server-test
       sensitiveHeaders: "*"
   retryable: true
   ignored-services: "*"

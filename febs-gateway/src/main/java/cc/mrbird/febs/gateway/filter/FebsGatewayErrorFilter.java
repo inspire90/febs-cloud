@@ -13,6 +13,9 @@ import org.springframework.util.ReflectionUtils;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author MrBird
+ */
 @Slf4j
 @Component
 public class FebsGatewayErrorFilter extends SendErrorFilter {
@@ -27,6 +30,7 @@ public class FebsGatewayErrorFilter extends SendErrorFilter {
             ExceptionHolder exception = findZuulException(ctx.getThrowable());
             String errorCause = exception.getErrorCause();
             Throwable throwable = exception.getThrowable();
+            log.error("报错：{}", throwable);
             String message = throwable.getMessage();
             message = StringUtils.isBlank(message) ? errorCause : message;
             febsResponse = resolveExceptionMessage(message, serviceId, febsResponse);

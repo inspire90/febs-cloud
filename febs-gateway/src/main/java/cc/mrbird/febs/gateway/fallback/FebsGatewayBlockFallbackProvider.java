@@ -5,6 +5,9 @@ import com.alibaba.csp.sentinel.adapter.gateway.zuul.fallback.ZuulBlockFallbackP
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.http.HttpStatus;
 
+/**
+ * @author MrBird
+ */
 public class FebsGatewayBlockFallbackProvider implements ZuulBlockFallbackProvider {
     @Override
     public String getRoute() {
